@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <div>
+    <%- include('navbar', {links: links}) %>
+    </div>
+    
+    <form method="POST" action="/new">
+        <input name="name" type="text">
+        <input name="developer" type="text">
+        <input name="stock" type="text">
+        <input name="price" type="text">
+        <button>Add Game</button>
+    </form>
+
+</body>
+</html>
