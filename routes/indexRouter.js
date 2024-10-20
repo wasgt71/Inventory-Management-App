@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const indexRouter = Router();
+const { deleteProduct } = require('../controllers/deleteController');
 
 const games = [
   {name: "DragonBall Sparking Zero",
@@ -33,6 +34,11 @@ indexRouter.post("/new", (req, res) => {
   res.redirect("/");
 });
 
+indexRouter.post("/index", (req, res) => {
+const { name, developer, stock, price  } = req.body;
+games.pop({ name: name, developer: developer, stock: stock, price: price })
+res.redirect("/");
+})
 
 //indexRouter.get("/", (req, res) => {
  // res.render("index", { games: games });

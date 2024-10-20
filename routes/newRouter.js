@@ -5,13 +5,14 @@ const newRouter = Router();
     { href: "/", text: "Home" },
     { href: "/new", text: "+ Add Product" },
   ];
-*/
-/*newRouter.get("/new", (req, res) => {
+
+newRouter.get("/new", (req, res) => {
 res.render("form");
-});*/
+});
 
 newRouter.post("/new", (req, res) => {
 res.render("form", { game, developer, stock, price });
 res.redirect("/");
-})
+})*/
+
 module.exports = newRouter;
