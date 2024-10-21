@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const editRouter = require("./routes/editRouter");
 const indexRouter = require("./routes/indexRouter");
 const newRouter = require("./routes/newRouter");
 const path = require("node:path");
@@ -30,13 +31,22 @@ const links = [
   { href: "/", text: "Home" }
 ];
 
+
+/*app.get("delete", (req, res) => {
+res.render("deleteGame");
+})*/
+
 app.get("/new", (req, res) => {
 res.render("Form", { title: "links", links: links });
 });
 
-app.get("/form", (req, res) => {
+app.get("/edit", (req, res) => {
+res.render("edit");
+})
+/*app.get("/form", (req, res) => {
   res.render("Form");
-});
+});*/
+
 
 
 app.set("views", path.join(__dirname, "views"));
@@ -44,6 +54,7 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/edit", editRouter);
 app.use("/new", newRouter);
 app.use("/", indexRouter);
 
