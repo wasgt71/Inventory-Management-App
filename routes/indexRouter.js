@@ -19,15 +19,14 @@ const games = [
   },
 ];
 
-const links = [{ href: "/new", text: "+ Add Product" }];
+const links = [
+  { href: "/new", text: "+ Add Product" },
+  { href: "/edit", text: "Edit Product" },
+];
 
 indexRouter.get("/", (req, res) => {
   res.render("index", { title: "gamStore", games: games, links: links });
 });
-
-//indexRouter.get("/", (req, res) => {
-// res.render("index", { links: links });
-//});
 
 indexRouter.post("/new", (req, res) => {
   const { name, developer, stock, price, id } = req.body;
@@ -45,30 +44,18 @@ indexRouter.post("/new", (req, res) => {
 indexRouter.post("/index", (req, res) => {
   const { id } = req.body;
   const trueId = Number(id);
-  const index = games.findIndex((game) => game.id == trueId); 
+  const index = games.findIndex((game) => game.id == trueId);
   if (index !== -1) {
-    games.splice(index, 1); 
+    games.splice(index, 1);
   }
   res.redirect("/");
   console.log(id);
 });
 
-//const gameIndex = games.forEach(games.findIndex(game => game.id === id));
-
-//if(gameIndex !== -1){
-//console.log(games.splice(gameIndex, 1));
-//}
-
-//games.splice(gameIndex, 1);
-
-//indexRouter.get("/", (req, res) => {
-// res.render("index", { games: games });
-// });
-
-//indexRouter.get("/new", (req, res) => {
-//res.render("form", { title: "All Games", games: games });
-//});
-
-indexRouter.post("/new", (req, res) => {});
+indexRouter.get("/index", (req, res) => {
+  const { gameId, gameName, gameDeveloper, gameStock, gamePrice } = req.query;
+  res.render("edit", { title: "gameInfo", gameId: gameId, gameName: gameName, gameDeveloper: gameDeveloper, gameStock: gameStock, gamePrice: gamePrice });
+  console.log(gameId, gameName, gameDeveloper, gameStock, gamePrice)
+});
 
 module.exports = indexRouter;

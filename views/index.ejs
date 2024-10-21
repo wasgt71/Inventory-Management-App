@@ -6,18 +6,26 @@
     <title>index</title>
   </head>
   <body>
-
-    <div>
-    <%- include('navbar', {links: links}) %>
-</div>
+    <div><%- include('navbar', {links: links}) %></div>
     <ul>
       <% games.map((game) => {%>
-      <li><%= game.name %></li>
-      <li><%= game.developer %></li>
-      <li><%= game.stock %></li>
-      <li><%= game.price %></li>
+      <form method="POST" action="/index">
+        <li name="name"><%= game.name %></li>
+        <li name="developer"><%= game.developer %></li>
+        <li name="stock"><%= game.stock %></li>
+        <li name="price"><%= game.price %></li>
+        <input type="hidden" name="id" value=" <%= game.id %> " />
+        <button>Delete</button>
+      </form>
+      <form method="GET" action="/index">
+      <input type="hidden" name="gameId" value=" <%= game.id %> " />
+      <input type="hidden" name="gameName" value=" <%= game.name %> " />
+      <input type="hidden" name="gameDeveloper" value=" <%= game.developer %> " />
+      <input type="hidden" name="gameStock" value=" <%= game.stock %> " />
+      <input type="hidden" name="gamePrice" value=" <%= game.price %> " />
+      <button>Edit</button>
+      </form>
       <% }) %>
     </ul>
-
   </body>
 </html>
