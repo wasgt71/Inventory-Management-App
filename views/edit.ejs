@@ -6,16 +6,18 @@
     <title>Document</title>
   </head>
   <body>
+    <form method="POST" action="/edit">
     <legend>name</legend>
-    <input type="text" value=" <%= gameName %> " />
+    <input name="name" type="text" value=" <%= gameName %> " />
     <legend>developer</legend>
-    <input type="text" value=" <%= gameDeveloper %> " />
+    <input name="developer" type="text" value=" <%= gameDeveloper %> " />
     <legend>stock</legend>
-    <input type="text" value=" <%= gameStock %> " />
+    <input name="stock" type="text" value=" <%= gameStock %> " />
     <legend>price</legend>
-    <input type="text" value=" <%= gamePrice %> " />
+    <input name="price" type="text" value=" <%= gamePrice %> " />
     <legend>GameID</legend>
-    <input type="text" value=" <%= gameId %> " />
+    <input name="id" type="text" value=" <%= gameId %> " />
     <button>Save</button>
+    </form>
   </body>
 </html>

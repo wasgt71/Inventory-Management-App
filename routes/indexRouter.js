@@ -58,4 +58,14 @@ indexRouter.get("/index", (req, res) => {
   console.log(gameId, gameName, gameDeveloper, gameStock, gamePrice)
 });
 
+indexRouter.post("/edit", (req, res) => {
+const { name, developer, stock, price, id } = req.body;
+const trueId = Number(id);
+const index = games.findIndex((game) => game.id == trueId);
+if (index !== -1) {
+  games[index] = {name: name, developer: developer, stock: stock, price: price, id: id}
+}
+res.redirect("/");
+console.log(id);
+})
 module.exports = indexRouter;
